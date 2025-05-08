@@ -7,6 +7,8 @@ services:
       - 'POSTGRES_USER=myuser'
     ports:
       - '5432'
+    volumes:
+      - 'postgres_data:/var/lib/postgresql/data'
   react-app:
     build: ./frontend
     ports:
@@ -16,3 +18,16 @@ services:
       - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
+  meilisearch:
+    image: 'getmeili/meilisearch:v1.14'
+    ports:
+      - '7700:7700'
+    volumes:
+      - './meili_data:/meili_data'
+    environment:
+      - MEILI_ENV=development
+      - MEILI_MASTER_KEY=sup3rS3cur3Mast3rK3y!123 # This is ok for now...
+
+volumes:
+  postgres_data:
+  meili_data:

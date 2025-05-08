@@ -10,6 +10,7 @@ import Aktivnosti from "./pages/AktivnostiPage";
 import OglasiPage from "./pages/OglasiPage";
 import NewPostPage from "./pages/NewPostPage";
 import MenzaPage from "./pages/MenzaPage";
+import TestPage from "./pages/TestPage";
 
 export default function App() {
   const { userData } = useUserData();
@@ -34,6 +35,7 @@ export default function App() {
           <Route path="/oglasi" element={<OglasiPage />} />
           <Route path="/oglasi/new" element={<NewPostPage />} />
           <Route path="/menza" element={<MenzaPage />} />
+          <Route path="/test" element={<TestPage />} />
         </Routes>
       </div>
     </Router>

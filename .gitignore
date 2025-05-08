@@ -5,6 +5,10 @@ target/
 
 # Ignore secret.properties
 src/main/resources/secret.properties
+secret.properties
+
+# Ignore meilisearch data
+meili_data/
 
 ### STS ###
 .apt_generated
