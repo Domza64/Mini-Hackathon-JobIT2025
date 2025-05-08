@@ -1,8 +1,9 @@
 export default interface Oglas {
-  postId: number;
+  id: number;
   postedById: number;
   categories: string[];
   postedBy: string;
+  title: string;
   text: string;
   contact: string;
   date: Date;

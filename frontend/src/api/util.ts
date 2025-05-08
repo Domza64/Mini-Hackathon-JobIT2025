@@ -63,7 +63,9 @@ export const fetchOglasi = async (
   try {
     const response = await fetch(
       `${apiUrl}/oglasi${
-        categories ? `?categories=${categories.join(",")}` : ""
+        categories && categories.length > 0
+          ? `?categories=${categories.join("-")}`
+          : ""
       }`,
       {
         method: "GET",

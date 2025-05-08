@@ -16,10 +16,11 @@ export default function OglasCard({ oglas }: { oglas: Oglas }) {
       <div className="p-6">
         <div className="flex items-center text-gray-500 text-sm mb-2">
           <FaIdBadge className="mr-1" />
-          <span>Post #{oglas.postId}</span>
+          <span>Post #{oglas.id}</span>
         </div>
 
-        <p className="text-gray-800 text-lg mb-4">{oglas.text}</p>
+        <p className="text-gray-800 text-lg mb-1">{oglas.title}</p>
+        <p className="mb-4 text-gray-600">{oglas.text}</p>
 
         {oglas.categories.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-4">

@@ -5,6 +5,9 @@ import hr.unizd.smartstudentcity.model.Oglas;
 import hr.unizd.smartstudentcity.repository.OglasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -17,15 +20,11 @@ public class OglasService {
     }
 
     public List<Oglas> getOglasi(String[] categories) {
-        return oglasRepository.findAll();
-//        ArrayList<OglasDTO> selectedPosts = new ArrayList<>();
-//        for (OglasDTO oglas : posts) {
-//            if (oglas.getCategories().containsAll(List.of(categories))) {
-//                selectedPosts.add(oglas);
-//            }
-//        }
+        List<Oglas> selectedPosts = oglasRepository.findAll();
 
-//        return selectedPosts;
+        selectedPosts.removeIf(p -> !new HashSet<>(p.getCategories()).containsAll(List.of(categories)));
+
+        return selectedPosts;
     }
 
 

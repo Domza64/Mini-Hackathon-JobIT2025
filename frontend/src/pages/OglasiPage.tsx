@@ -23,30 +23,17 @@ function Home() {
 
   useEffect(() => {
     const getOglasi = async () => {
-      const response = await fetchOglasi();
+      const response = await fetchOglasi(selectedCategories);
 
       if (response.oglasi) {
-        setOglasi(response.oglasi);
+        setOglasi(response.oglasi.reverse());
       } else {
         setError(response.error);
       }
     };
 
     getOglasi();
-  }, []);
-
-  // Filter oglasi based on selected categories and search query
-  const filteredOglasi = oglasi?.filter((oglas) => {
-    const matchesCategory =
-      selectedCategories.length === 0 ||
-      oglas.categories.some((cat) => selectedCategories.includes(cat));
-
-    const matchesSearch =
-      oglas.text.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      oglas.postedBy.toLowerCase().includes(searchQuery.toLowerCase());
-
-    return matchesCategory && matchesSearch;
-  });
+  }, [selectedCategories]);
 
   const toggleCategory = (category: string) => {
     setSelectedCategories((prev) =>
@@ -140,7 +127,7 @@ function Home() {
         </div>
       ) : (
         <>
-          {filteredOglasi?.length === 0 ? (
+          {oglasi?.length === 0 ? (
             <div className="flex-grow flex flex-col items-center justify-center text-gray-500 py-12">
               <p className="text-lg mb-2">No posts found</p>
               <p className="text-sm">
@@ -149,8 +136,8 @@ function Home() {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredOglasi?.map((o: Oglas) => (
-                <OglasCard key={o.postId} oglas={o} />
+              {oglasi?.map((o: Oglas) => (
+                <OglasCard key={o.id} oglas={o} />
               ))}
             </div>
           )}

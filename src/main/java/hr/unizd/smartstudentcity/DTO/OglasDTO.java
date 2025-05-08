@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class OglasDTO {
-    private int postId;
+    private int id;
     private int postedById;
     private ArrayList<String> categories;
     private String postedBy;
@@ -13,8 +13,8 @@ public class OglasDTO {
     private String contact;
     private Date date;
 
-    public OglasDTO(int postId, int postedById, ArrayList<String> categories, String postedBy, String title, String text, String contact) {
-        this.postId = postId;
+    public OglasDTO(int id, int postedById, ArrayList<String> categories, String postedBy, String title, String text, String contact) {
+        this.id = id;
         this.postedById = postedById;
         this.categories = categories;
         this.postedBy = postedBy;
@@ -25,7 +25,7 @@ public class OglasDTO {
     }
 
     public int getPostId() {
-        return postId;
+        return id;
     }
 
     public int getPostedById() {
