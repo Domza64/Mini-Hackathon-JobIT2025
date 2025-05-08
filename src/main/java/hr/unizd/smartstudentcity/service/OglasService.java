@@ -1,30 +1,35 @@
 package hr.unizd.smartstudentcity.service;
 
 import hr.unizd.smartstudentcity.DTO.OglasDTO;
+import hr.unizd.smartstudentcity.model.Oglas;
+import hr.unizd.smartstudentcity.repository.OglasRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class OglasService {
-    private final ArrayList<OglasDTO> posts = new ArrayList<>();
+    @Autowired
+    private OglasRepository oglasRepository;
 
-    public ArrayList<OglasDTO> getOglasi() {
-        return posts;
+    public List<Oglas> getOglasi() {
+        return oglasRepository.findAll();
     }
 
-    public ArrayList<OglasDTO> getOglasi(String[] categories) {
-        ArrayList<OglasDTO> selectedPosts = new ArrayList<>();
-        for (OglasDTO oglas : posts) {
-            if (oglas.getCategories().containsAll(List.of(categories))) {
-                selectedPosts.add(oglas);
-            }
-        }
-        return selectedPosts;
+    public List<Oglas> getOglasi(String[] categories) {
+        return oglasRepository.findAll();
+//        ArrayList<OglasDTO> selectedPosts = new ArrayList<>();
+//        for (OglasDTO oglas : posts) {
+//            if (oglas.getCategories().containsAll(List.of(categories))) {
+//                selectedPosts.add(oglas);
+//            }
+//        }
+
+//        return selectedPosts;
     }
 
 
     public void addOglas(OglasDTO oglas) {
-        posts.add(oglas);
+        oglasRepository.save(Oglas.fromDTO(oglas));
     }
 }

@@ -1,11 +1,11 @@
 package hr.unizd.smartstudentcity.controller;
 
 import hr.unizd.smartstudentcity.DTO.OglasDTO;
+import hr.unizd.smartstudentcity.model.Oglas;
 import hr.unizd.smartstudentcity.service.OglasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/oglasi")
@@ -18,7 +18,7 @@ public class OglasController {
     }
 
     @GetMapping
-    public ArrayList<OglasDTO> getOglasi(@RequestParam(required = false) String categories) {
+    public List<Oglas> getOglasi(@RequestParam(required = false) String categories) {
         if (categories != null) {
             return oglasService.getOglasi(categories.split("-"));
         }
