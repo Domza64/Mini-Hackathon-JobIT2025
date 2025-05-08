@@ -51,7 +51,7 @@ export default function ModuleSelection() {
         {/* Toggle Button */}
         <button
           onClick={() => setShown(!shown)}
-          className={`self-start mt-16 h-10 w-10 flex items-center justify-center bg-white hover:bg-gray-100 transition-colors border border-gray-200 shadow-sm rounded-r-lg ${
+          className={`self-start h-10 px-1 mt-[40vh] flex items-center justify-center bg-blue-200 hover:bg-gray-100 transition-colors shadow-sm rounded-r-lg ${
             shown ? "" : "ml-0"
           }`}
         >

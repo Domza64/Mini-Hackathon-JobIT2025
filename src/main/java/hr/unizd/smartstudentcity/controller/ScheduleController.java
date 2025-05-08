@@ -1,6 +1,6 @@
 package hr.unizd.smartstudentcity.controller;
 
-import hr.unizd.smartstudentcity.common.EventDTO;
+import hr.unizd.smartstudentcity.DTO.EventDTO;
 import hr.unizd.smartstudentcity.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

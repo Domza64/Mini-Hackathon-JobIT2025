@@ -1,4 +1,4 @@
-package hr.unizd.smartstudentcity.common;
+package hr.unizd.smartstudentcity.DTO;
 
 import java.util.ArrayList;
 import java.util.Date;

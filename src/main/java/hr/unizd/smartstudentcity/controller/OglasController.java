@@ -1,6 +1,6 @@
 package hr.unizd.smartstudentcity.controller;
 
-import hr.unizd.smartstudentcity.common.OglasDTO;
+import hr.unizd.smartstudentcity.DTO.OglasDTO;
 import hr.unizd.smartstudentcity.service.OglasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

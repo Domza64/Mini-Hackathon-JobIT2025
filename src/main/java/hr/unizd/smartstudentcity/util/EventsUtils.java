@@ -1,6 +1,6 @@
 package hr.unizd.smartstudentcity.util;
 
-import hr.unizd.smartstudentcity.common.EventDTO;
+import hr.unizd.smartstudentcity.DTO.EventDTO;
 
 import java.util.ArrayList;
 import java.util.Date;

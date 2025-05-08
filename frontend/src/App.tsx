@@ -9,6 +9,7 @@ import { useUserData } from "./hooks/useUserData";
 import Aktivnosti from "./pages/AktivnostiPage";
 import OglasiPage from "./pages/OglasiPage";
 import NewPostPage from "./pages/NewPostPage";
+import MenzaPage from "./pages/MenzaPage";
 
 export default function App() {
   const { userData } = useUserData();
@@ -32,6 +33,7 @@ export default function App() {
           <Route path="/aktivnosti" element={<Aktivnosti />} />
           <Route path="/oglasi" element={<OglasiPage />} />
           <Route path="/oglasi/new" element={<NewPostPage />} />
+          <Route path="/menza" element={<MenzaPage />} />
         </Routes>
       </div>
     </Router>

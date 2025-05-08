@@ -1,6 +1,6 @@
 package hr.unizd.smartstudentcity.service;
 
-import hr.unizd.smartstudentcity.common.OglasDTO;
+import hr.unizd.smartstudentcity.DTO.OglasDTO;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;

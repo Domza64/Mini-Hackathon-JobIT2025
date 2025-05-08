@@ -1,6 +1,6 @@
 package hr.unizd.smartstudentcity.service;
 
-import hr.unizd.smartstudentcity.common.EventDTO;
+import hr.unizd.smartstudentcity.DTO.EventDTO;
 import hr.unizd.smartstudentcity.exception.AuthException;
 import hr.unizd.smartstudentcity.model.Student;
 import hr.unizd.smartstudentcity.util.EventsUtils;

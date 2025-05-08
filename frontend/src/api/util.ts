@@ -1,4 +1,4 @@
-import { Aktivnost } from "../components/ui/aktivnosti/AktivnostiCard";
+import { Aktivnost } from "../types/aktivnost";
 import CalendarEvent from "../types/calendarEvent";
 import Oglas from "../types/oglas";
 

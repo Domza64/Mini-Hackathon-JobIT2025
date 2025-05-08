@@ -1,7 +1,7 @@
 import Oglas from "../../../types/oglas";
 import { FaUser, FaPhone, FaIdBadge, FaCalendarAlt } from "react-icons/fa";
 
-export default function AktivnostiCard({ oglas }: { oglas: Oglas }) {
+export default function OglasCard({ oglas }: { oglas: Oglas }) {
   // Format the date to a more readable format
   const formattedDate = oglas.date
     ? new Date(oglas.date).toLocaleDateString("en-US", {
