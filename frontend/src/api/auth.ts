@@ -1,6 +1,9 @@
-export const authenticate = async (
-  username: string
-): Promise<string | null> => {
+export interface AuthResponse {
+  studentId?: string;
+  error?: string;
+}
+
+export const authenticate = async (username: string): Promise<AuthResponse> => {
   const apiUrl = import.meta.env.VITE_API_URL;
 
   try {
@@ -10,11 +13,14 @@ export const authenticate = async (
     });
 
     if (!response.ok) {
-      throw new Error();
+      const errorMessage = await response.text();
+      throw new Error(errorMessage);
     }
 
-    return response.text();
+    return { studentId: await response.text() };
   } catch (error) {
-    return null;
+    return {
+      error: error instanceof Error ? error.message : "Authentication failed",
+    };
   }
 };

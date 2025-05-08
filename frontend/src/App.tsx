@@ -1,16 +1,19 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import Home from "./pages/HomePage";
-import About from "./pages/AboutPage";
-import NotFound from "./pages/NotFound";
-import Header from "./components/Header";
+import SchedulePage from "./pages/RasporedPage";
+import NotFound from "./pages/NotFoundPage";
+import Header from "./components/ui/header/Header";
 import ModuleSelection from "./components/ui/categories/ModuleSelection";
-import { useState } from "react";
 import LoginPage from "./pages/LoginPage";
+import { useUserData } from "./hooks/useUserData";
+import Aktivnosti from "./pages/AktivnostiPage";
+import OglasiPage from "./pages/OglasiPage";
+import NewPostPage from "./pages/NewPostPage";
 
 export default function App() {
-  const [user, setUser] = useState<null | string>(localStorage.getItem("user"));
+  const { userData } = useUserData();
 
-  if (!user) {
+  if (!userData) {
     return <LoginPage />;
   }
 
@@ -18,13 +21,17 @@ export default function App() {
     <Router>
       <Header />
 
-      <div className="flex">
+      <div className="flex mt-20">
         <ModuleSelection />
 
         <Routes>
+          {/** TODO - code splitting and stuff to make it faster */}
           <Route path="*" element={<NotFound />} />
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/raspored" element={<SchedulePage />} />
+          <Route path="/aktivnosti" element={<Aktivnosti />} />
+          <Route path="/oglasi" element={<OglasiPage />} />
+          <Route path="/oglasi/new" element={<NewPostPage />} />
         </Routes>
       </div>
     </Router>

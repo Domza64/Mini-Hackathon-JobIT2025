@@ -1,21 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { authenticate } from "../api/auth";
+import { useUserData } from "../hooks/useUserData";
 
 export default function LoginPage() {
+  const { setUserData } = useUserData();
+  const [error, setError] = useState<null | string>("");
   const [username, setUsername] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const user = await authenticate(username);
+    const response = await authenticate(username);
 
-    if (user) {
-      localStorage.setItem("user", username);
-      window.location.href = "/";
+    if (response.studentId) {
+      setUserData({ name: username, id: parseInt(response.studentId) });
     } else {
-      alert("ERROR logging in");
+      setError(response.error || "Unknown error");
     }
   };
+
+  useEffect(() => {
+    setError(null);
+  }, [username]);
 
   return (
     <main className="w-screen h-screen flex justify-center items-center bg-gray-100">
@@ -38,6 +44,7 @@ export default function LoginPage() {
               value={username}
             />
           </div>
+          {error && <p className="text-red-500 mb-4">{error}</p>}
           <button
             type="submit"
             className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200"
