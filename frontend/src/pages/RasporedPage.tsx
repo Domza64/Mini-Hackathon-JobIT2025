@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchSchedule } from "../api/util";
 import { useUserData } from "../hooks/useUserData";
-import {
-  Calendar,
-  momentLocalizer,
-  Views,
-  ViewsProps,
-} from "react-big-calendar";
+import { Calendar, momentLocalizer, Views } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import CalendarEvent from "../types/calendarEvent";
@@ -65,7 +60,7 @@ export default function SchedulePage() {
   };
 
   return (
-    <main className="flex justify-center items-center flex-grow flex-col p-4 h-full">
+    <main className="flex justify-center items-center w-full flex-col p-4">
       <h1 className="text-2xl font-bold mb-4">My Schedule</h1>
       <div className="w-full h-[80vh] p-4">
         <Calendar

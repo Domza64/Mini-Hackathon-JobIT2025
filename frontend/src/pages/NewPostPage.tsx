@@ -53,7 +53,7 @@ export default function NewPostPage() {
   };
 
   return (
-    <main className="flex-grow p-6 max-w-3xl mx-auto w-full">
+    <main className="p-4 max-w-4xl mx-auto w-full">
       <div className="bg-white rounded-xl shadow-md overflow-hidden">
         <div className="p-6">
           <h1 className="text-2xl font-bold mb-6 flex items-center gap-2">

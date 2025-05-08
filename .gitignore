@@ -3,6 +3,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+# Ignore secret.properties
+src/main/resources/secret.properties
+
 ### STS ###
 .apt_generated
 .classpath

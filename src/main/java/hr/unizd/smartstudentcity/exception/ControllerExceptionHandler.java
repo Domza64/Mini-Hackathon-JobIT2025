@@ -13,4 +13,9 @@ public class ControllerExceptionHandler {
     public ResponseEntity<String> handleAuthException(AuthException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
+
+    @ExceptionHandler(GreetingException.class)
+    public ResponseEntity<String> handleGreetingException(GreetingException e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+    }
 }

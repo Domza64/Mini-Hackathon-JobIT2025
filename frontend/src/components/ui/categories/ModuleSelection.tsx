@@ -17,7 +17,7 @@ export default function ModuleSelection() {
       {/* Sidebar */}
       <div className="fixed top-0 left-0 h-screen z-20 flex">
         {shown && (
-          <aside className="w-64 mt-16 h-[calc(100vh-4rem)] p-4 bg-white border-r border-gray-200 shadow-sm">
+          <aside className="w-[250px] mt-16 p-4 bg-white border-r border-gray-200 shadow-sm">
             <ul className="space-y-2">
               <CategoryCard
                 title="Home"
@@ -51,9 +51,7 @@ export default function ModuleSelection() {
         {/* Toggle Button */}
         <button
           onClick={() => setShown(!shown)}
-          className={`self-start h-10 px-1 mt-[40vh] flex items-center justify-center bg-blue-200 hover:bg-gray-100 transition-colors shadow-sm rounded-r-lg ${
-            shown ? "" : "ml-0"
-          }`}
+          className="h-10 px-1 mt-[40vh] flex items-center justify-center bg-blue-200 hover:bg-gray-100 transition-colors rounded-r-lg"
         >
           {shown ? (
             <FiChevronLeft className="text-lg" />
@@ -64,7 +62,7 @@ export default function ModuleSelection() {
       </div>
 
       {/* Spacer for content */}
-      {shown && <div className="w-64"></div>}
+      {shown && <div className="w-[330px]"></div>}
     </>
   );
 }

@@ -7,6 +7,30 @@ export interface ScheduleResponse {
   error?: string;
 }
 
+export const getGreeting = async (): Promise<{
+  error?: string;
+  text?: string;
+}> => {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
+  try {
+    const response = await fetch(`${apiUrl}/ai/greetings`, {
+      method: "GET",
+    });
+
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      throw new Error(errorMessage);
+    }
+
+    return { text: await response.text() };
+  } catch (error) {
+    return {
+      error: error instanceof Error ? error.message : "Error getting greeting",
+    };
+  }
+};
+
 export const fetchSchedule = async (
   studentId: number // In actual app use studentId from JWT
 ): Promise<ScheduleResponse> => {
