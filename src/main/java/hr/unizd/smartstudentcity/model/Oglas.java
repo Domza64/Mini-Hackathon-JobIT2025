@@ -57,7 +57,7 @@ public class Oglas {
     }
 
     public static Oglas fromDTO(OglasDTO oglas) {
-        return new Oglas(oglas.getPostedById(), oglas.getCategories(), oglas.getPostedBy(), oglas.getTitle(), oglas.getText(), oglas.getContact());
+        return new Oglas(oglas.postedById(), oglas.categories(), oglas.postedBy(), oglas.title(), oglas.text(), oglas.contact());
     }
 
     // Getters and setters

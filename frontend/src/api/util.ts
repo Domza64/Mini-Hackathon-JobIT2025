@@ -37,10 +37,13 @@ export const fetchSchedule = async (
   const apiUrl = import.meta.env.VITE_API_URL;
 
   try {
-    const response = await fetch(`${apiUrl}/schedule?studentId=${studentId}`, {
-      // Send JWT instead of studentId as url param
-      method: "GET",
-    });
+    const response = await fetch(
+      `${apiUrl}/event/schedule?studentId=${studentId}`,
+      {
+        // Send JWT instead of studentId as url param
+        method: "GET",
+      }
+    );
 
     if (!response.ok) {
       const errorMessage = await response.text();

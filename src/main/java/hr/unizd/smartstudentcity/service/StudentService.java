@@ -2,28 +2,24 @@ package hr.unizd.smartstudentcity.service;
 
 import hr.unizd.smartstudentcity.DTO.EventDTO;
 import hr.unizd.smartstudentcity.exception.AuthException;
+import hr.unizd.smartstudentcity.model.Event;
 import hr.unizd.smartstudentcity.model.Student;
-import hr.unizd.smartstudentcity.util.EventsUtils;
+import hr.unizd.smartstudentcity.repository.EventRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class StudentService {
+    @Autowired
+    EventRepository eventRepository;
+
     private final ArrayList<Student> students = new ArrayList<>(List.of(
             new Student(1, "Nera", "CS"),
-            new Student(2 , "Stipe", "MORNARI"),
-            new Student(3, "Mate", "CS")));
-
-    private final HashMap<String, ArrayList<EventDTO>> courses = new HashMap<>(Map.of(
-            "CS", new ArrayList<>(EventsUtils.getEvents()))
-//            "MORNARI", new ArrayList<>(List.of("Ribarstvo")),
-//            "ZNANSTVENICI", new ArrayList<>(List.of("Kemija", "Fizika", "Data science")),
-//            "POVIJEST", new ArrayList<>(List.of("Rim", "Povjest grcke"))
-    );
+            new Student(2, "Stipe", "MORNARI"),
+            new Student(3, "Mate", "CS"),
+            new Student(4, "Misko", "POVJESNICARI")));
 
     public int authenticate(String name) {
         for (Student student : students) {
@@ -44,16 +40,17 @@ public class StudentService {
         return student;
     }
 
-    public ArrayList<EventDTO> getSchedule(Integer studentId) {
-        ArrayList<EventDTO> schedule = new ArrayList<>();
+    public List<EventDTO> getSchedule(Integer studentId) {
         Student student = getStudentById(studentId);
-        if (student != null) {
-            schedule.addAll(courses.getOrDefault(student.getCourse(), new ArrayList<>()));
+        if (student == null) {
+            // TODO - throw exception or sm...
+            return new ArrayList<>();
         }
+
+        String course = student.getCourse();
 
         // TODO - Add more stuff to schedule specific to this student, maybe stuff student added
 
-        System.out.println(schedule);
-        return schedule;
+        return eventRepository.findByCourseIgnoreCaseAndCourseIsNotNull(course).stream().map(Event::toDto).toList();
     }
 }

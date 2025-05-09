@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ControllerExceptionHandler {
 
+    @ExceptionHandler(EventConflictException.class)
+    public ResponseEntity<String> handleEventConflictException(EventConflictException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
     @ExceptionHandler(AuthException.class)
     public ResponseEntity<String> handleAuthException(AuthException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());

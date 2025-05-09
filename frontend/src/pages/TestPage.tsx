@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { fetchActivities, fetchOglasi } from "../api/util";
+//@ts-ignore - Need to install types or sm for this to not give ts error
 import { MeiliSearch } from "meilisearch";
+import AddEventForm from "../components/temporary-test/AddEventForm";
+import EventsTable from "../components/temporary-test/AllEventDisplay";
 
 export default function TestPage() {
   const [error, setError] = useState("");
@@ -21,6 +24,7 @@ export default function TestPage() {
           title: oglasi.title,
           text: oglasi.text,
           url: staticUrl,
+          type: "oglasi",
         }));
 
         var staticUrl = "/aktivnosti?type=klubovi";
@@ -29,6 +33,7 @@ export default function TestPage() {
           title: aktivnosti.name,
           text: aktivnosti.description,
           url: staticUrl,
+          type: "klubovi",
         }));
         if (test) {
           updatedOglasi.push(...test);
@@ -40,6 +45,7 @@ export default function TestPage() {
           title: aktivnosti.name,
           text: aktivnosti.description,
           url: staticUrl,
+          type: "rekreacija",
         }));
         if (test2) {
           updatedOglasi.push(...test2);
@@ -51,6 +57,7 @@ export default function TestPage() {
           title: aktivnosti.name,
           text: aktivnosti.description,
           url: staticUrl,
+          type: "kulturna dogadanja",
         }));
         if (test3) {
           updatedOglasi.push(...test3);
@@ -85,6 +92,9 @@ export default function TestPage() {
       <button className="bg-blue-200 p-3" onClick={createIndexes}>
         CREATE INDEXES
       </button>
+      <AddEventForm />
+      <hr />
+      <EventsTable />
     </main>
   );
 }
